@@ -6,15 +6,15 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 08:14:35 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/01 15:19:43 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/02 14:25:30 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include "includes/ft_printf.h"
 
 t_cho		g_choose[] = {['s'] = ft_string, ['c'] = ft_char,
 ['d'] = ft_putnbr, ['i'] = ft_putnbr,
 ['u'] = ft_absputnbr, ['p'] = ft_putadr,
-['x'] = ft_puthexax,['X'] = ft_puthexaX };
+['x'] = ft_puthexax, ['X'] = ft_puthexaxmaj};
 
 int	ft_printf(const char *format, ...)
 {
@@ -32,7 +32,8 @@ int	ft_printf(const char *format, ...)
 	while (format[*j] != '\0')
 	{
 		ft_read(format + *j, i, j);
-		if (format[*j] != '\0')
+		if ((format[*j] == '%' && (format[*j + 1] >= 'a'
+					&& format[*j + 1] <= 'z' )) || format[*j + 1] == 'X')
 		{
 			g_choose[(int)format[*j + 1]](ap, i);
 			*j = *j + 2;
@@ -40,19 +41,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (*i);
-}
-
-#include <stdio.h>
-int main(int argc, char **argv)
-{
-	(void) argc;
-	(void) argv;
-	int	i;
-	int j;
-
-	i = ft_printf("Bonjour %x et les Messieurs %d",15,10);
-	ft_printf("\n");
-	j = printf("Bonjour %x et les Messieurs %d",15,10);
-	printf("\n%d \n%d\n", i,j);
-
 }

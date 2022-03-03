@@ -6,20 +6,28 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:19:21 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/01 15:18:28 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/02 13:40:54 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_string(va_list ap, int *i)
 {
 	const char	*c;
 
 	c = va_arg(ap, const char *);
-	while (*c)
+	if (c == NULL)
 	{
-		ft_putchar(*c++);
-		*i = *i + 1;
+		write (1, "(null)", 6);
+		*i = *i + 6;
+	}
+	else
+	{	
+		while (*c)
+		{
+			ft_putchar(*c++);
+			*i = *i + 1;
+		}
 	}
 }
 
@@ -51,8 +59,10 @@ void	ft_absputnbr(va_list ap, int *i)
 void	ft_putadr(va_list ap, int *i)
 {
 	unsigned long long	b;
-	
+
 	b = va_arg(ap, unsigned long long);
-	*i = *i + 1;
+	*i = *i + 2;
+	ft_putchar('0');
+	ft_putchar('x');
 	ft_puthexa(b, i);
 }

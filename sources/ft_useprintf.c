@@ -6,10 +6,10 @@
 /*   By: jperras <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 09:47:30 by jperras           #+#    #+#             */
-/*   Updated: 2022/03/01 15:19:57 by jperras          ###   ########.fr       */
+/*   Updated: 2022/03/02 12:43:21 by jperras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_putchar(char c)
 {
@@ -27,8 +27,7 @@ void	ft_read(const char *format, int *i, int *j)
 	if (*format == '%' && *(format + 1) == '%')
 	{
 		ft_putchar(*format++);
-		ft_putchar(*format++);
-		*i = *i + 2;
+		*i = *i + 1;
 		*j = *j + 2;
 	}
 }
@@ -40,7 +39,7 @@ void	ft_readnbr(int nb, int *j)
 	if (nb < 0)
 	{
 		ft_putchar('-');
-		nb = - nb;
+		nb = -nb;
 		*j = *j + 1;
 	}
 	i = nb;

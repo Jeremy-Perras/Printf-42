@@ -1,6 +1,6 @@
 # ft-printf-42
 
-Table of content :
+##Table of content :
 * [What is printf ?](#what-is-printf-)
 * [What is in it ?](#what-is-in-it-)
 * [How does is work ?](#how-does-is-work-)

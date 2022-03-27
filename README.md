@@ -7,7 +7,7 @@
 
 ### What is printf ?
  Printf is a individual project at 42 re-create printf that can be used for later.
- be used for later. The purpose is to understand Variadic functions and Function pointer.
+ The purpose is to understand Variadic functions and Function pointer.
  
 ### What is in it ?
 ```
